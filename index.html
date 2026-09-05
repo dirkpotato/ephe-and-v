@@ -406,11 +406,9 @@
 
     /* --- Main Gallery Section --- */
     .gallery-section {
-      padding: 40px 0 60px;
+      padding: 40px 24px 10px;
       max-width: 1440px;
       margin: 0 auto;
-      padding-left: 24px;
-      padding-right: 24px;
     }
 
     /* High-contrast bold curated header */
@@ -501,7 +499,7 @@
     .masonry-grid {
       column-count: 1;
       column-gap: 20px;
-      padding: 10px 0 50px;
+      padding: 10px 0 20px;
     }
 
     @media (min-width: 640px) {
@@ -573,37 +571,41 @@
       transform: scale(1.03);
     }
 
-    /* --- Seamless Gradual Fade Zone: Starts above Bento, Finishes high near the top of the section --- */
+    /* --- Extended, Ultra-Smooth Gradual Transition Zone --- */
+    /* Starts right below photos, gently diffuses across 240px, reaching 100% solid dark at Bento top */
     .dark-lower-zone {
-      /* Smooth multi-stop gradient without gray muddy banding */
+      /* Long multi-stop organic blend curve */
       background: linear-gradient(
         180deg,
         #f4ede3 0px,
-        #e5ded2 20px,
-        #c5c0b5 42px,
-        #7d8d83 68px,
-        #33433a 92px,
-        #17211d 115px,
+        #ede5da 40px,
+        #dad3c7 85px,
+        #a8b6ac 135px,
+        #62756a 180px,
+        #2d3b34 215px,
+        #17211d 245px,
         #17211d 100%
       );
       /* Perceptually uniform OKLab space where supported */
       background: linear-gradient(
         180deg in oklab,
         #f4ede3 0px,
-        #c5c0b5 38px,
-        #6d7d74 72px,
-        #17211d 115px,
+        #e6ded4 50px,
+        #c5c1b6 100px,
+        #798b81 165px,
+        #2d3b34 215px,
+        #17211d 245px,
         #17211d 100%
       );
       color: #ffffff;
-      padding: 55px 0 0;
-      margin-top: 15px;
+      padding: 110px 0 0;
+      margin-top: 0;
       position: relative;
     }
 
     .bento-section-wrapper {
       max-width: 1380px;
-      margin: 0 auto 32px; /* Moved closer to footer as requested */
+      margin: 0 auto 32px;
       padding: 0 24px;
     }
 
@@ -726,9 +728,9 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
 
-    /* Seamless Footer - Positioned close to Bento Card without 'The Holy Matrimony' */
+    /* Seamless Footer */
     footer {
-      padding: 10px 24px 55px; /* Compact padding */
+      padding: 10px 24px 55px;
       text-align: center;
       background: #17211d;
       border: none;
@@ -916,7 +918,7 @@
     /* Load More Button */
     .load-more-wrap {
       text-align: center;
-      padding: 10px 0 50px;
+      padding: 15px 0 20px;
     }
   </style>
 </head>
@@ -991,7 +993,7 @@
     </div>
   </section>
 
-  <!-- Lower Dark Seamless Zone (Gradient Starts Above Bento Card, Finishes High Near Top of Section) -->
+  <!-- Extended Gradual Transition Zone (Longer Silk Fade, Turning Fully Dark Right at Bento Card) -->
   <div class="dark-lower-zone">
     <!-- Bento Mosaic Banner Section -->
     <div class="bento-section-wrapper">
@@ -1060,7 +1062,7 @@
     const PAGE_SIZE = 48;
     let currentLightboxIndex = 0;
 
-    // --- Ken Burns Hero Slideshow (Refined & Smooth) ---
+    // --- Ken Burns Hero Slideshow ---
     function initHeroSlideshow() {
       const container = document.getElementById('kenburnsSlider');
       if (!container || !heroSlides.length) return;
@@ -1224,7 +1226,6 @@
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      // Adjacent Preloading for 0ms transitions
       preloadAdjacent(index);
     }
 
@@ -1313,7 +1314,6 @@
       renderBentoGrid();
       setTab('highlights');
       
-      // Position sliding tab indicator
       setTimeout(() => {
         const activeBtn = document.querySelector('.filter-tab.active');
         if (activeBtn) updateTabSlider(activeBtn);
