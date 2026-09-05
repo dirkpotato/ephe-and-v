@@ -23,11 +23,13 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* --- Cohesive Warm Natural Linen Palette & Pure Organic Flow --- */
+    /* --- Warm Natural Linen Palette & Deep Dark Olive Lower Zone --- */
     :root {
       --bg-main: #f6f1ea;           /* Warm Natural Linen Canvas */
       --bg-surface: #ede5da;        /* Earthen Alabaster Stone */
       --bg-card: #ffffff;           /* Crisp Pure White */
+      --bg-dark-zone: #17211d;      /* Deep Earthy Dark Olive Forest */
+      --bg-dark-surface: #1e2a25;   /* Rich Olive Charcoal */
       --text-main: #221e1b;         /* Deep Sumi Charcoal (High Contrast) */
       --text-sub: #5c554e;          /* Rich Weathered Stone */
       --text-dim: #8e857c;          /* Cashmere Grey */
@@ -35,7 +37,9 @@
       --accent-hover: #a56c60;
       --accent-bold: #914f44;       /* Deep High-Legibility Terracotta */
       --accent-soft: #ecdcd3;       /* Blush Clay */
+      --accent-olive: #7f9a9a;      /* Muted Eucalyptus */
       --border-subtle: rgba(43, 39, 36, 0.08);
+      --border-dark-subtle: rgba(255, 255, 255, 0.1);
       --border-focus: rgba(186, 126, 114, 0.35);
       --card-shadow: 0 10px 28px rgba(150, 130, 110, 0.06);
       --card-shadow-hover: 0 18px 38px rgba(130, 110, 90, 0.12);
@@ -359,7 +363,7 @@
       transform: scale(1.04);
     }
 
-    /* --- Gallery Section (Cohesive Linen Canvas) --- */
+    /* --- Gallery Section (Linen Canvas) --- */
     .gallery-header {
       text-align: center;
       padding: 65px 0 32px;
@@ -514,10 +518,18 @@
       transform: scale(1.03);
     }
 
-    /* --- Floating Architectural Bento Mosaic Section --- */
+    /* --- Deep Dark Olive Forest Lower Zone (After Gallery) --- */
+    .dark-lower-zone {
+      background-color: var(--bg-dark-zone);
+      color: #ffffff;
+      padding: 90px 0 0;
+      position: relative;
+      transition: background-color 0.4s ease;
+    }
+
     .bento-section-wrapper {
       max-width: 1380px;
-      margin: 40px auto 90px;
+      margin: 0 auto 90px;
       padding: 0 24px;
     }
 
@@ -530,12 +542,12 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(150, 130, 110, 0.12);
-      border: 1px solid var(--border-subtle);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-dark-subtle);
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-      background-color: #181716;
+      background-color: var(--bg-dark-surface);
     }
 
     .bento-mosaic-section.visible {
@@ -551,7 +563,7 @@
       grid-template-rows: repeat(3, 195px);
       gap: 8px;
       z-index: 1;
-      filter: brightness(0.72) saturate(1.15);
+      filter: brightness(0.68) saturate(1.15);
       pointer-events: none;
     }
 
@@ -599,7 +611,7 @@
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: rgba(20, 18, 16, 0.65);
+      background: radial-gradient(circle at center, rgba(23, 33, 29, 0.72) 0%, rgba(23, 33, 29, 0.88) 100%);
       pointer-events: none;
     }
 
@@ -616,10 +628,10 @@
       font-size: 0.86rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #ebdcd3;
+      color: #d1b1aa;
       font-weight: 700;
       margin-bottom: 12px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .bento-cta-title {
@@ -629,15 +641,54 @@
       line-height: 1.1;
       margin-bottom: 16px;
       color: #ffffff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
     }
 
     .bento-cta-desc {
-      color: rgba(255, 255, 255, 0.94);
+      color: rgba(255, 255, 255, 0.9);
       font-size: 1.05rem;
       line-height: 1.75;
       margin-bottom: 34px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    /* Footer in Deep Dark Olive Lower Zone */
+    footer {
+      padding: 70px 24px 55px;
+      text-align: center;
+      background: var(--bg-dark-zone);
+      border-top: 1px solid var(--border-dark-subtle);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', 'Italiana', serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .footer-sub {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+      margin-bottom: 22px;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
     }
 
     /* --- Pixieset-Style Fullscreen Centered Lightbox Modal (Warm White / Linen Light Theme) --- */
@@ -779,44 +830,6 @@
     .lightbox-prev { left: 24px; }
     .lightbox-next { right: 24px; }
 
-    /* Footer */
-    footer {
-      padding: 80px 24px 50px;
-      text-align: center;
-      background: var(--bg-main);
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', 'Italiana', serif;
-      font-size: 1.9rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .footer-brand {
-      font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: var(--accent-bold);
-      font-weight: 600;
-    }
-
-    .footer-sub {
-      color: var(--text-sub);
-      font-size: 0.92rem;
-      margin-bottom: 22px;
-    }
-
-    .footer-copy {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-      letter-spacing: 0.04em;
-    }
-
     .load-more-container {
       text-align: center;
       padding: 10px 0 50px;
@@ -825,7 +838,7 @@
 </head>
 <body>
 
-  <!-- Fullscreen Ken Burns Hero Section (Crisp, Clean, No Foggy Gradient) -->
+  <!-- Fullscreen Ken Burns Hero Section -->
   <section class="hero-container" id="hero">
     <div class="kenburns-slider" id="kenBurnsSlider">
       <!-- Injected via JavaScript -->
@@ -871,7 +884,7 @@
     </div>
   </section>
 
-  <!-- Interactive Gallery Section -->
+  <!-- Interactive Gallery Section (Warm Linen Canvas) -->
   <section class="container" id="gallery">
     <div class="gallery-header">
       <div class="section-eyebrow">The Story of August 16</div>
@@ -902,39 +915,41 @@
     </div>
   </section>
 
-  <!-- Floating Architectural Bento Mosaic Section -->
-  <div class="bento-section-wrapper">
-    <section class="bento-mosaic-section" id="bentoBanner">
-      <div class="bento-mosaic-grid" id="bentoMosaicGrid">
-        <!-- Bento cells injected dynamically -->
-      </div>
-
-      <div class="bento-overlay"></div>
-
-      <div class="bento-cta-content">
-        <div class="bento-cta-subhead">The Complete Collection</div>
-        <h2 class="bento-cta-title">Full Photo Library</h2>
-        <p class="bento-cta-desc">
-          Access the complete collection on Google Photos to view every full-resolution original, download in high quality, and share with family and friends.
-        </p>
-
-        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://photos.app.goo.gl/vAiiYs9hoexbe4LT9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 13px 36px; font-size: 0.96rem;">
-            <span>Open Google Photos Album</span>
-            <i data-lucide="arrow-up-right"></i>
-          </a>
+  <!-- Deep Dark Olive Forest Lower Zone (After Gallery) -->
+  <div class="dark-lower-zone">
+    <div class="bento-section-wrapper">
+      <section class="bento-mosaic-section" id="bentoBanner">
+        <div class="bento-mosaic-grid" id="bentoMosaicGrid">
+          <!-- Bento cells injected dynamically -->
         </div>
-      </div>
-    </section>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-logo">Ephe & V</div>
-    <div class="footer-brand">Dhwang Photography</div>
-    <div class="footer-sub">August 16, 2026 • The Holy Matrimony</div>
-    <div class="footer-copy">&copy; 2026 Dhwang Photography. All rights reserved.</div>
-  </footer>
+        <div class="bento-overlay"></div>
+
+        <div class="bento-cta-content">
+          <div class="bento-cta-subhead">The Complete Collection</div>
+          <h2 class="bento-cta-title">Full Photo Library</h2>
+          <p class="bento-cta-desc">
+            Access the complete collection on Google Photos to view every full-resolution original, download in high quality, and share with family and friends.
+          </p>
+
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://photos.app.goo.gl/vAiiYs9hoexbe4LT9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 13px 36px; font-size: 0.96rem;">
+              <span>Open Google Photos Album</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer within the Deep Dark Olive Forest Zone -->
+    <footer>
+      <div class="footer-logo">Ephe & V</div>
+      <div class="footer-brand">Dhwang Photography</div>
+      <div class="footer-sub">August 16, 2026 • The Holy Matrimony</div>
+      <div class="footer-copy">&copy; 2026 Dhwang Photography. All rights reserved.</div>
+    </footer>
+  </div>
 
   <!-- Pixieset-Style Centered Fullscreen Lightbox Modal (White/Linen Theme) -->
   <div class="lightbox-modal" id="lightboxModal">
