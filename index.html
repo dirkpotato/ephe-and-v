@@ -444,7 +444,7 @@
     .masonry-grid {
       column-count: 1;
       column-gap: 20px;
-      padding: 10px 0 60px;
+      padding: 10px 0 50px;
     }
 
     @media (min-width: 640px) {
@@ -516,29 +516,34 @@
       transform: scale(1.03);
     }
 
-    /* --- Dedicated Color Transition Buffer Zone (Finishes BEFORE Bento Section) --- */
-    .color-transition-zone {
-      width: 100%;
-      height: 220px;
+    /* --- Seamless Gradual Fade Zone: Starts above Bento, Finishes by top 1/3 of card --- */
+    .dark-lower-zone {
+      /* Smooth multi-stop gradient without gray muddy banding */
       background: linear-gradient(
         180deg,
-        #f4ede3 0%,
-        #ded6c7 22%,
-        #98a69e 48%,
-        #4a5c53 72%,
-        #24332c 90%,
+        #f4ede3 0px,
+        #ebe3d8 50px,
+        #d8d3c9 110px,
+        #b2b9b2 170px,
+        #798780 230px,
+        #44534c 280px,
+        #24312b 330px,
+        #17211d 370px,
         #17211d 100%
       );
-      margin-top: 20px;
-      pointer-events: none;
-    }
-
-    /* --- Deep Dark Olive Forest Lower Zone (100% Solid & Continuous to the End) --- */
-    .dark-lower-zone {
-      background-color: #17211d;
+      /* Perceptually uniform OKLab space where supported */
+      background: linear-gradient(
+        180deg in oklab,
+        #f4ede3 0px,
+        #d5d1c9 100px,
+        #82918a 220px,
+        #2f3d37 310px,
+        #17211d 370px,
+        #17211d 100%
+      );
       color: #ffffff;
-      padding: 40px 0 0;
-      margin: 0;
+      padding: 70px 0 0;
+      margin-top: 20px;
       position: relative;
     }
 
@@ -667,7 +672,7 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
 
-    /* Seamless Footer - Zero Dividing Line, Same Solid Dark Background */
+    /* Seamless Footer - Same Solid Dark Olive Background to the End */
     footer {
       padding: 40px 24px 70px;
       text-align: center;
@@ -931,10 +936,7 @@
     </div>
   </section>
 
-  <!-- Dedicated Color Transition Zone (Finishes BEFORE Bento Section) -->
-  <div class="color-transition-zone"></div>
-
-  <!-- Deep Dark Olive Forest Lower Zone (Solid & Seamless Through Footer) -->
+  <!-- Seamless Gradient Transition into Deep Dark Olive Forest Zone -->
   <div class="dark-lower-zone">
     <div class="bento-section-wrapper">
       <section class="bento-mosaic-section" id="bentoBanner">
@@ -961,7 +963,7 @@
       </section>
     </div>
 
-    <!-- Seamless Footer (Zero Dividing Line) -->
+    <!-- Seamless Footer (Solid Dark Olive All the Way to End) -->
     <footer>
       <div class="footer-logo">Ephe & V</div>
       <div class="footer-brand">Dhwang Photography</div>
