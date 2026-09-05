@@ -17,22 +17,23 @@
   <!-- Google Fonts: Editorial Serif & Crisp Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* --- Warm Natural Linen & Terracotta Palette --- */
+    /* --- Warm Natural Linen Palette & Seamless Gradients --- */
     :root {
       --bg-main: #f6f1ea;           /* Warm Unbleached Natural Linen */
-      --bg-surface: #eae2d6;        /* Earthen Alabaster Stone */
+      --bg-surface: #ede5da;        /* Earthen Alabaster Stone */
       --bg-card: #ffffff;           /* Crisp Pure White */
-      --text-main: #2b2724;         /* Sumi Charcoal */
-      --text-sub: #69625a;          /* Weathered Stone */
-      --text-dim: #9c9389;          /* Cashmere Grey */
+      --text-main: #221e1b;         /* Deep Sumi Charcoal (High Contrast) */
+      --text-sub: #5c554e;          /* Rich Weathered Stone */
+      --text-dim: #8e857c;          /* Cashmere Grey */
       --accent: #ba7e72;            /* Warm Rose Terracotta */
       --accent-hover: #a56c60;
+      --accent-bold: #914f44;       /* Deep High-Legibility Terracotta */
       --accent-soft: #ecdcd3;       /* Blush Clay */
       --border-subtle: rgba(43, 39, 36, 0.08);
       --border-focus: rgba(186, 126, 114, 0.35);
@@ -60,11 +61,10 @@
       overflow-x: hidden;
     }
 
-    /* Modern Editorial Serif Headings */
+    /* Editorial Serif Headings */
     h1, h2, h3, h4, .serif-text {
       font-family: 'Cormorant Garamond', 'Italiana', Georgia, serif;
-      font-weight: 300;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
     }
 
     .container {
@@ -79,74 +79,15 @@
       }
     }
 
-    /* --- Floating Modern Top Navigation --- */
-    .nav-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 24px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  -webkit-backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      background: transparent;
-      border-bottom: 1px solid transparent;
-    }
-
-    .nav-header.scrolled {
-      padding: 15px 36px;
-      background: rgba(246, 241, 234, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-subtle);
-      box-shadow: 0 4px 20px rgba(150, 130, 110, 0.05);
-    }
-
-    .nav-brand {
-      font-family: 'Cormorant Garamond', 'Italiana', serif;
-      font-size: 1.55rem;
-      letter-spacing: 0.14em;
-      font-weight: 400;
-      color: #ffffff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
-    }
-
-    .nav-brand span {
-      font-style: italic;
-      font-family: 'Playfair Display', serif;
-      color: #f7eedf;
-    }
-
-    .nav-header.scrolled .nav-brand {
-      color: var(--text-main);
-      text-shadow: none;
-    }
-
-    .nav-header.scrolled .nav-brand span {
-      color: var(--accent);
-    }
-
     /* Buttons */
     .btn-primary {
       background: var(--accent);
       border: 1px solid var(--accent);
       color: #ffffff;
-      padding: 11px 26px;
+      padding: 12px 28px;
       border-radius: 40px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
       letter-spacing: 0.03em;
       text-decoration: none;
       display: inline-flex;
@@ -154,27 +95,27 @@
       gap: 8px;
       cursor: pointer;
       transition: var(--transition-silk);
-      box-shadow: 0 4px 16px rgba(186, 126, 114, 0.25);
+      box-shadow: 0 4px 18px rgba(186, 126, 114, 0.28);
     }
 
     .btn-primary:hover {
       background: var(--accent-hover);
       border-color: var(--accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(186, 126, 114, 0.35);
+      box-shadow: 0 8px 26px rgba(186, 126, 114, 0.38);
       color: #ffffff;
     }
 
     .btn-hero-ghost {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.38);
       color: #ffffff;
-      padding: 11px 28px;
+      padding: 12px 30px;
       border-radius: 40px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
       letter-spacing: 0.03em;
       text-decoration: none;
       display: inline-flex;
@@ -191,11 +132,11 @@
       color: #ffffff;
     }
 
-    /* --- Butter-Smooth Ken Burns Hero Section --- */
+    /* --- Butter-Smooth Ken Burns Hero Section with Seamless Fade Out --- */
     .hero-container {
       position: relative;
       height: 100vh;
-      min-height: 720px;
+      min-height: 740px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -243,9 +184,27 @@
       z-index: 2;
       background: linear-gradient(
         180deg, 
-        rgba(0, 0, 0, 0.3) 0%, 
-        rgba(0, 0, 0, 0.42) 50%, 
+        rgba(0, 0, 0, 0.25) 0%, 
+        rgba(0, 0, 0, 0.38) 45%, 
         rgba(0, 0, 0, 0.6) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Seamless Feathered Fade at Hero Bottom into Linen Section */
+    .hero-bottom-blend {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      z-index: 2;
+      background: linear-gradient(
+        to bottom,
+        rgba(246, 241, 234, 0) 0%,
+        rgba(246, 241, 234, 0.35) 40%,
+        rgba(246, 241, 234, 0.82) 75%,
+        #f6f1ea 100%
       );
       pointer-events: none;
     }
@@ -263,40 +222,41 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      padding: 6px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      padding: 7px 24px;
       border-radius: 40px;
-      font-size: 0.78rem;
-      letter-spacing: 0.3em;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #f6eedf;
+      color: #ffffff;
       margin-bottom: 22px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .hero-subhead {
       font-family: 'Cinzel', 'Italiana', serif;
-      font-size: 0.94rem;
+      font-size: 0.98rem;
       letter-spacing: 0.44em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.92);
-      font-weight: 400;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
       margin-bottom: 14px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
     }
 
     .hero-title {
       font-family: 'Cormorant Garamond', 'Italiana', serif;
-      font-size: clamp(3.8rem, 9.6vw, 7rem);
-      line-height: 1.04;
+      font-size: clamp(3.9rem, 9.8vw, 7.2rem);
+      line-height: 1.02;
       font-weight: 300;
       letter-spacing: 0.04em;
       margin: 0 0 24px;
       color: #ffffff;
-      text-shadow: 0 4px 28px rgba(0,0,0,0.65);
+      text-shadow: 0 4px 28px rgba(0,0,0,0.7);
     }
 
     .hero-title span {
@@ -306,13 +266,13 @@
     }
 
     .hero-note {
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto 34px;
-      color: rgba(255, 255, 255, 0.94);
-      font-size: 1.05rem;
-      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.06rem;
+      line-height: 1.8;
       font-weight: 300;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.7);
     }
 
     .hero-cta-group {
@@ -324,7 +284,7 @@
 
     .scroll-indicator {
       position: absolute;
-      bottom: 26px;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
@@ -332,35 +292,37 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
+      color: var(--text-main);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       cursor: pointer;
       transition: var(--transition-silk);
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
     .scroll-indicator:hover {
-      color: #ffffff;
+      color: var(--accent-bold);
       transform: translate(-50%, 3px);
     }
 
-    /* --- Featured Spotlight Strip --- */
+    /* --- Featured Spotlight Strip with Seamless Gradient --- */
     .featured-strip {
-      padding: 65px 0 45px;
+      padding: 70px 0 45px;
       overflow: hidden;
-      background: var(--bg-main);
+      background: linear-gradient(180deg, #f6f1ea 0%, #faf6f0 50%, #f6f1ea 100%);
     }
 
+    /* High-Legibility Eyebrow Subtitles */
     .section-eyebrow {
       text-align: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.84rem;
-      letter-spacing: 0.34em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
+      color: var(--accent-bold);
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
     .carousel-track {
@@ -414,17 +376,20 @@
       transform: scale(1.04);
     }
 
-    /* --- Gallery Section (Warm Linen & Animated Sliding Pill Tab) --- */
+    /* --- Gallery Section (Bold Title, Legible Eyebrow & Seamless Flow) --- */
     .gallery-header {
       text-align: center;
       padding: 60px 0 28px;
     }
 
+    /* Bold Curated Gallery Title */
     .section-title {
-      font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+      font-family: 'Cormorant Garamond', 'Italiana', Georgia, serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
       margin-bottom: 24px;
-      font-weight: 300;
+      font-weight: 600; /* Bold as requested */
       color: var(--text-main);
+      letter-spacing: 0.02em;
     }
 
     /* Sliding Pill Tab Container */
@@ -437,7 +402,7 @@
     .filter-tabs-wrapper {
       position: relative;
       display: inline-flex;
-      background: rgba(186, 126, 114, 0.1);
+      background: rgba(186, 126, 114, 0.12);
       padding: 5px;
       border-radius: 50px;
       border: 1px solid var(--border-subtle);
@@ -451,7 +416,7 @@
       left: 0;
       border-radius: 40px;
       background: #ffffff;
-      box-shadow: 0 4px 18px rgba(160, 120, 100, 0.18);
+      box-shadow: 0 4px 18px rgba(160, 120, 100, 0.2);
       transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), width 0.38s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
       z-index: 1;
@@ -460,13 +425,13 @@
     .filter-tab {
       position: relative;
       z-index: 2;
-      padding: 10px 30px;
+      padding: 10px 32px;
       border-radius: 40px;
       border: none;
       background: transparent;
       color: var(--text-sub);
-      font-size: 0.92rem;
-      font-weight: 500;
+      font-size: 0.94rem;
+      font-weight: 600;
       letter-spacing: 0.02em;
       cursor: pointer;
       transition: color 0.3s ease;
@@ -482,7 +447,7 @@
 
     .filter-tab.active {
       color: var(--text-main);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Masonry Photo Grid with Fluid Staggered Entrance */
@@ -566,7 +531,7 @@
       transform: scale(1.03);
     }
 
-    /* --- Full-Bleed Edge-to-Edge Bento Box Mosaic Banner (100vw Screen Width) --- */
+    /* --- Full-Bleed Bento Box with Seamless Top & Bottom Fade Transitions --- */
     .bento-fullbleed-wrapper {
       width: 100vw;
       position: relative;
@@ -574,21 +539,19 @@
       right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
-      margin-top: 60px;
-      margin-bottom: 90px;
+      margin-top: 40px;
+      margin-bottom: 0;
       overflow: hidden;
     }
 
     .bento-mosaic-section {
       position: relative;
-      min-height: 620px;
+      min-height: 640px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
       background-color: #1a1816;
       opacity: 0;
       transform: translateY(24px);
@@ -600,12 +563,35 @@
       transform: translateY(0);
     }
 
+    /* Seamless Top & Bottom Feathered Blends into Linen Canvas */
+    .bento-fade-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      z-index: 3;
+      background: linear-gradient(to bottom, #f6f1ea 0%, rgba(246, 241, 234, 0.75) 35%, rgba(246, 241, 234, 0) 100%);
+      pointer-events: none;
+    }
+
+    .bento-fade-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      z-index: 3;
+      background: linear-gradient(to top, #f6f1ea 0%, rgba(246, 241, 234, 0.75) 35%, rgba(246, 241, 234, 0) 100%);
+      pointer-events: none;
+    }
+
     .bento-mosaic-grid {
       position: absolute;
       inset: -5px;
       display: grid;
       grid-template-columns: repeat(8, 1fr);
-      grid-template-rows: repeat(3, 210px);
+      grid-template-rows: repeat(3, 220px);
       gap: 10px;
       z-index: 1;
       filter: brightness(0.72) saturate(1.1);
@@ -615,14 +601,14 @@
     @media (max-width: 1200px) {
       .bento-mosaic-grid {
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(3, 190px);
+        grid-template-rows: repeat(3, 195px);
       }
     }
 
     @media (max-width: 768px) {
       .bento-mosaic-grid {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(6, 135px);
+        grid-template-rows: repeat(6, 140px);
       }
     }
 
@@ -656,42 +642,43 @@
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: rgba(18, 16, 15, 0.68);
+      background: rgba(18, 16, 15, 0.65);
       pointer-events: none;
     }
 
     .bento-cta-content {
       position: relative;
-      z-index: 3;
+      z-index: 4;
       max-width: 760px;
-      padding: 60px 24px;
+      padding: 70px 24px;
       color: #ffffff;
     }
 
     .bento-cta-subhead {
-      font-size: 0.84rem;
-      letter-spacing: 0.32em;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #ebdcd3;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 14px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     .bento-cta-title {
       font-family: 'Cormorant Garamond', 'Italiana', serif;
-      font-size: clamp(2.5rem, 5.2vw, 4rem);
-      font-weight: 300;
+      font-size: clamp(2.6rem, 5.4vw, 4.2rem);
+      font-weight: 600;
       line-height: 1.1;
       margin-bottom: 18px;
       color: #ffffff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
     }
 
     .bento-cta-desc {
-      color: rgba(255, 255, 255, 0.94);
-      font-size: 1.05rem;
-      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.06rem;
+      line-height: 1.8;
       margin-bottom: 34px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.6);
     }
@@ -739,7 +726,7 @@
       font-size: 0.92rem;
       letter-spacing: 0.12em;
       color: var(--text-main);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .lightbox-actions-right {
@@ -765,7 +752,7 @@
     .lightbox-btn:hover {
       background: rgba(43, 39, 36, 0.14);
       transform: scale(1.08);
-      color: var(--accent);
+      color: var(--accent-bold);
     }
 
     /* Exactly Center-Locked Fullscreen Image Canvas */
@@ -803,7 +790,7 @@
       transition: opacity 0.12s ease-out;
     }
 
-    /* Left & Right Chevrons with Frosted White Pill & Drop Shadow */
+    /* Left & Right Chevrons */
     .lightbox-nav-btn {
       position: absolute;
       top: 50%;
@@ -827,7 +814,7 @@
 
     .lightbox-nav-btn:hover {
       background: #ffffff;
-      color: var(--accent);
+      color: var(--accent-bold);
       transform: translateY(-50%) scale(1.1);
       box-shadow: 0 8px 24px rgba(120, 100, 80, 0.22);
     }
@@ -835,40 +822,41 @@
     .lightbox-prev { left: 24px; }
     .lightbox-next { right: 24px; }
 
-    /* Footer */
+    /* Footer Seamless Continuation */
     footer {
-      padding: 70px 24px 45px;
+      padding: 85px 24px 55px;
       text-align: center;
       background: var(--bg-main);
-      border-top: 1px solid var(--border-subtle);
     }
 
     .footer-logo {
       font-family: 'Cormorant Garamond', 'Italiana', serif;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       letter-spacing: 0.08em;
       margin-bottom: 6px;
+      font-weight: 500;
     }
 
     .footer-brand {
       font-family: 'Cinzel', serif;
       font-size: 0.95rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 8px;
-      color: var(--accent);
+      color: var(--accent-bold);
+      font-weight: 600;
     }
 
     .footer-sub {
       color: var(--text-sub);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       margin-bottom: 22px;
     }
 
     .footer-copy {
       color: var(--text-dim);
-      font-size: 0.8rem;
-      letter-spacing: 0.03em;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
     }
 
     .load-more-container {
@@ -879,26 +867,14 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <header class="nav-header" id="navHeader">
-    <a href="#" class="nav-brand">Ephe <span>&</span> V</a>
-
-    <div class="nav-actions">
-      <!-- Google Photos Link -->
-      <a href="https://photos.app.goo.gl/vAiiYs9hoexbe4LT9" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        <span>Open Album</span>
-        <i data-lucide="arrow-up-right"></i>
-      </a>
-    </div>
-  </header>
-
-  <!-- Fullscreen Ken Burns Hero Section -->
+  <!-- Fullscreen Ken Burns Hero Section with Seamless Bottom Blend -->
   <section class="hero-container" id="hero">
     <div class="kenburns-slider" id="kenBurnsSlider">
       <!-- Injected via JavaScript -->
     </div>
     
     <div class="hero-overlay"></div>
+    <div class="hero-bottom-blend"></div>
 
     <!-- Centered Editorial Flow -->
     <div class="hero-content" id="heroContent">
@@ -930,7 +906,7 @@
     </div>
   </section>
 
-  <!-- Featured Spotlight Carousel -->
+  <!-- Featured Spotlight Carousel with Seamless Gradient -->
   <section class="featured-strip" id="featuredStrip">
     <div class="section-eyebrow">Handpicked Moments</div>
     <div class="carousel-track" id="carouselTrack">
@@ -969,9 +945,11 @@
     </div>
   </section>
 
-  <!-- Full-Bleed Edge-to-Edge Bento Box Mosaic Banner (100vw Screen Width) -->
+  <!-- Full-Bleed Bento Box with Seamless Gradient Transitions (100vw Screen Width) -->
   <div class="bento-fullbleed-wrapper">
     <section class="bento-mosaic-section" id="bentoBanner">
+      <div class="bento-fade-top"></div>
+      
       <div class="bento-mosaic-grid" id="bentoMosaicGrid">
         <!-- Bento cells injected dynamically -->
       </div>
@@ -986,12 +964,14 @@
         </p>
 
         <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://photos.app.goo.gl/vAiiYs9hoexbe4LT9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 12px 34px; font-size: 0.96rem;">
+          <a href="https://photos.app.goo.gl/vAiiYs9hoexbe4LT9" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 13px 36px; font-size: 0.96rem;">
             <span>Open Google Photos Album</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
         </div>
       </div>
+
+      <div class="bento-fade-bottom"></div>
     </section>
   </div>
 
@@ -1056,7 +1036,6 @@
     const lightboxDownloadBtn = document.getElementById('lightboxDownloadBtn');
     const loadMoreContainer = document.getElementById('loadMoreContainer');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const navHeader = document.getElementById('navHeader');
     const filterTabsWrapper = document.getElementById('filterTabsWrapper');
     const tabSliderPill = document.getElementById('tabSliderPill');
     const btnExploreHighlights = document.getElementById('btnExploreHighlights');
@@ -1076,7 +1055,7 @@
           e.preventDefault();
           const target = document.getElementById('gallery');
           if (target) {
-            const yOffset = -60;
+            const yOffset = -30;
             const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
@@ -1089,16 +1068,9 @@
         if (activeTab) updateSliderPill(activeTab);
       });
 
-      // Hero scroll parallax & gentle fade + Nav header transitions
+      // Hero scroll parallax & gentle fade
       window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        
-        if (scrollY > 50) {
-          navHeader.classList.add('scrolled');
-        } else {
-          navHeader.classList.remove('scrolled');
-        }
-
         if (scrollY < window.innerHeight) {
           const opacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.75));
           const translateY = scrollY * 0.25;
