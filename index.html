@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* --- Rich Warm Crème Linen Palette & Deep Dark Olive Fade --- */
+    /* --- Warm Crème Linen Palette & Deep Dark Olive Lower Zone --- */
     :root {
       --bg-main: #f4ede3;           /* Warm Rich Crème Linen */
       --bg-surface: #e9dfd0;        /* Earthen Crème Alabaster */
@@ -516,25 +516,35 @@
       transform: scale(1.03);
     }
 
-    /* --- Multi-Stop Gradual Fade from Crème Linen into Deep Dark Olive Forest --- */
-    .dark-lower-zone {
+    /* --- Dedicated Color Transition Buffer Zone (Finishes BEFORE Bento Section) --- */
+    .color-transition-zone {
+      width: 100%;
+      height: 220px;
       background: linear-gradient(
         180deg,
         #f4ede3 0%,
-        #e5ded2 12%,
-        #b8c2bc 32%,
-        #65766e 55%,
-        #2a3832 78%,
+        #ded6c7 22%,
+        #98a69e 48%,
+        #4a5c53 72%,
+        #24332c 90%,
         #17211d 100%
       );
+      margin-top: 20px;
+      pointer-events: none;
+    }
+
+    /* --- Deep Dark Olive Forest Lower Zone (100% Solid & Continuous to the End) --- */
+    .dark-lower-zone {
+      background-color: #17211d;
       color: #ffffff;
-      padding: 110px 0 0;
+      padding: 40px 0 0;
+      margin: 0;
       position: relative;
     }
 
     .bento-section-wrapper {
       max-width: 1380px;
-      margin: 0 auto 90px;
+      margin: 0 auto 80px;
       padding: 0 24px;
     }
 
@@ -547,12 +557,12 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
-      border: 1px solid var(--border-dark-subtle);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-      background-color: var(--bg-dark-surface);
+      background-color: #1e2a25;
     }
 
     .bento-mosaic-section.visible {
@@ -657,12 +667,13 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
 
-    /* Footer - Line Completely Removed */
+    /* Seamless Footer - Zero Dividing Line, Same Solid Dark Background */
     footer {
-      padding: 60px 24px 60px;
+      padding: 40px 24px 70px;
       text-align: center;
-      background: var(--bg-dark-zone);
-      border-top: none; /* No line */
+      background: #17211d;
+      border: none;
+      margin: 0;
     }
 
     .footer-logo {
@@ -696,7 +707,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* --- Pixieset-Style Fullscreen Centered Lightbox Modal (Warm White / Linen Light Theme) --- */
+    /* --- Pixieset-Style Fullscreen Centered Lightbox Modal (White/Linen Theme) --- */
     .lightbox-modal {
       position: fixed;
       inset: 0;
@@ -920,7 +931,10 @@
     </div>
   </section>
 
-  <!-- Multi-Stop Gradual Fade from Crème Linen into Deep Dark Olive Forest -->
+  <!-- Dedicated Color Transition Zone (Finishes BEFORE Bento Section) -->
+  <div class="color-transition-zone"></div>
+
+  <!-- Deep Dark Olive Forest Lower Zone (Solid & Seamless Through Footer) -->
   <div class="dark-lower-zone">
     <div class="bento-section-wrapper">
       <section class="bento-mosaic-section" id="bentoBanner">
@@ -947,7 +961,7 @@
       </section>
     </div>
 
-    <!-- Footer with Zero Dividing Line -->
+    <!-- Seamless Footer (Zero Dividing Line) -->
     <footer>
       <div class="footer-logo">Ephe & V</div>
       <div class="footer-brand">Dhwang Photography</div>
