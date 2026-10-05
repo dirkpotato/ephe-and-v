@@ -461,22 +461,22 @@
     }
     .floral.is-visible img { opacity: 0.9; scale: 1; }
 
-    .floral-tl { top: -25px; left: -30px; width: clamp(220px, 26vw, 380px); }
-    .floral-tr { top: -25px; right: -30px; width: clamp(220px, 26vw, 380px); }
+    .floral-tl { top: clamp(16px, 2.5vw, 36px); left: max(16px, calc(50% - 760px)); width: clamp(190px, 23vw, 350px); }
+    .floral-tr { top: clamp(16px, 2.5vw, 36px); right: max(16px, calc(50% - 760px)); width: clamp(190px, 23vw, 350px); }
     .floral-tr img { transform: scaleX(-1); }
 
     .floral-sl { top: 40px; left: max(-30px, calc(50% - 780px)); width: clamp(130px, 13vw, 200px); rotate: -6deg; }
     .floral-sr { top: 40px; right: max(-30px, calc(50% - 780px)); width: clamp(130px, 13vw, 200px); rotate: 6deg; }
     .floral-sr img { transform: scaleX(-1); }
 
-    /* Archive Section Botanical Accents */
-    .floral-bento-tl { top: -45px; left: -30px; width: clamp(200px, 24vw, 360px); }
-    .floral-bento-tr { top: -45px; right: -30px; width: clamp(200px, 24vw, 360px); }
+    /* Archive Section Botanical Accents (Clean, unclipped positive coordinates framing the keepsake card) */
+    .floral-bento-tl { top: clamp(20px, 3vw, 44px); left: max(16px, calc(50% - 740px)); width: clamp(190px, 22vw, 340px); }
+    .floral-bento-tr { top: clamp(20px, 3vw, 44px); right: max(16px, calc(50% - 740px)); width: clamp(190px, 22vw, 340px); }
     .floral-bento-tr img { transform: scaleX(-1); }
 
     @media (max-width: 900px) {
       .floral-sl, .floral-sr { display: none; }
-      .floral-tl, .floral-tr, .floral-bento-tl, .floral-bento-tr { width: 180px; top: -15px; }
+      .floral-tl, .floral-tr, .floral-bento-tl, .floral-bento-tr { width: 160px; top: 12px; }
       .floral.is-visible img { opacity: 0.7; }
     }
 
@@ -485,8 +485,9 @@
        ========================================================================== */
     .spotlight {
       position: relative;
-      padding: clamp(100px, 13vw, 160px) 0 clamp(60px, 8vw, 100px);
-      overflow: hidden;
+      padding: clamp(90px, 12vw, 150px) 0 clamp(60px, 8vw, 100px);
+      overflow-x: clip;
+      overflow-y: visible;
       background: var(--canvas);
     }
     .section-head { position: relative; z-index: 2; padding: 0 24px; text-align: center; }
@@ -607,8 +608,21 @@
       position: relative;
       max-width: 1480px;
       margin: 0 auto;
-      padding: clamp(40px, 6vw, 70px) clamp(16px, 3vw, 40px) 20px;
+      padding: clamp(40px, 6vw, 70px) clamp(16px, 3vw, 40px) clamp(60px, 8vw, 100px);
       background: var(--canvas);
+    }
+
+    .gallery-transition {
+      max-width: 440px;
+      margin: clamp(48px, 6vw, 72px) auto 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .gallery-transition .rule {
+      margin: 0 auto;
+      color: var(--mauve);
+      opacity: 0.35;
     }
 
     .tabs-wrap { display: flex; justify-content: center; margin: clamp(36px, 4.5vw, 56px) 0 clamp(36px, 4.5vw, 54px); position: relative; z-index: 2; }
@@ -723,8 +737,9 @@
     .archive-section {
       position: relative;
       background: var(--canvas);
-      padding: clamp(60px, 8vw, 100px) 0 clamp(28px, 4vw, 44px);
-      overflow: hidden;
+      padding: clamp(80px, 10vw, 120px) 0 clamp(32px, 4vw, 48px);
+      overflow-x: clip;
+      overflow-y: visible;
     }
 
     .bento-wrap {
@@ -801,11 +816,12 @@
        ========================================================================== */
     footer {
       text-align: center;
-      padding: clamp(24px, 3.5vw, 44px) 24px 60px;
+      padding: clamp(28px, 4vw, 48px) 24px 60px;
       background: var(--canvas);
       color: var(--ink-soft);
       position: relative;
-      overflow: hidden;
+      overflow-x: clip;
+      overflow-y: visible;
     }
     .footer-garland-crest {
       width: clamp(280px, 32vw, 460px);
@@ -1182,6 +1198,11 @@
       <button class="btn-outline-load" id="loadMoreBtn">
         Load More Photos &nbsp;<span id="remainingCount" style="font-family: var(--serif); font-style: italic; font-size: 1.05rem;"></span>
       </button>
+    </div>
+
+    <!-- Editorial Transition Bridge to Archive Section -->
+    <div class="gallery-transition reveal" style="--d: 140ms">
+      <span class="rule"></span>
     </div>
   </section>
 
