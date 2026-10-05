@@ -140,7 +140,8 @@
     }
 
     /* ==========================================================================
-       STICKY TOP NAVIGATION
+       SMART SCROLL TOP NAVIGATION
+       Hides when scrolling down, smoothly slides down when scrolling up
        ========================================================================== */
     .topnav {
       position: fixed;
@@ -151,12 +152,13 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 clamp(20px, 4vw, 60px);
-      background: rgba(251, 245, 244, 0.88);
+      background: rgba(251, 245, 244, 0.92);
       backdrop-filter: blur(20px) saturate(1.2);
       -webkit-backdrop-filter: blur(20px) saturate(1.2);
       border-bottom: 1px solid var(--hairline);
       transform: translateY(-100%);
-      transition: transform 0.6s var(--ease-out);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 30px rgba(120, 94, 92, 0.06);
     }
     .topnav.show { transform: translateY(0); }
     .topnav-mark {
@@ -208,7 +210,6 @@
       color: #fff;
     }
 
-    /* Ken Burns Slides Container */
     .kenburns-slider {
       position: absolute;
       inset: 0;
@@ -251,7 +252,6 @@
       100% { opacity: 0; }
     }
 
-    /* Multi-layered cinematic vignette for crystalline typography contrast */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -280,7 +280,6 @@
     }
     @keyframes heroIn { to { opacity: 1; translate: 0 0; filter: blur(0); } }
 
-    /* Date Pill Badge */
     .hero-date {
       display: inline-flex;
       align-items: center;
@@ -300,7 +299,6 @@
       background: rgba(255, 255, 255, 0.55);
     }
 
-    /* Subtitle */
     .hero-subhead {
       margin-top: 32px;
       font-family: var(--serif);
@@ -312,7 +310,6 @@
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
 
-    /* Bride & Groom Romantic Calligraphic Title */
     .hero-title {
       font-family: var(--script);
       font-weight: 400;
@@ -332,7 +329,6 @@
       opacity: 0.95;
     }
 
-    /* Refined Poetic Note — High contrast, balanced line-wrap */
     .hero-note {
       max-width: 480px;
       margin: 0 auto 36px;
@@ -346,7 +342,6 @@
       text-wrap: balance;
     }
 
-    /* Harmonized Luxury Pill Buttons */
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
@@ -403,7 +398,6 @@
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
     }
 
-    /* Scroll Cue */
     .scroll-cue {
       position: absolute;
       left: 50%;
@@ -451,7 +445,7 @@
 
     /* ==========================================================================
        WATERCOLOR BOTANICALS
-       ========================================================================= */
+       ========================================================================== */
     .floral {
       position: absolute;
       pointer-events: none;
@@ -622,7 +616,6 @@
       background: var(--canvas);
     }
 
-    /* Minimalist Filter Tabs */
     .tabs-wrap { display: flex; justify-content: center; margin: clamp(36px, 4.5vw, 56px) 0 clamp(36px, 4.5vw, 54px); position: relative; z-index: 2; }
     .tabs {
       position: relative;
@@ -702,7 +695,6 @@
     .photo:hover img { transform: scale(1.035); }
     .photo:hover::after { opacity: 1; }
 
-    /* Load More Button */
     .load-more { text-align: center; padding: 36px 0 20px; position: relative; z-index: 2; }
     .btn-outline-load {
       display: inline-flex;
@@ -741,7 +733,6 @@
       isolation: isolate;
     }
 
-    /* Continuous, perfectly eased sunset-into-velvet gradient bridge */
     .dark-lower-zone::before {
       content: "";
       position: absolute;
@@ -794,7 +785,6 @@
       padding: 0 clamp(16px, 3vw, 24px);
     }
 
-    /* Bento Mosaic Card — Fully immersed in dark velvet night */
     .bento {
       position: relative;
       min-height: 560px;
@@ -896,17 +886,28 @@
     }
 
     /* ==========================================================================
-       PIXIESET-STYLE MODAL LIGHTBOX
+       PIXIESET-STYLE MODAL LIGHTBOX WITH WATERCOLOR BLOOM LOADER
+       Smooth open/close transition & organic watercolor pigment loader
        ========================================================================== */
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 2000;
       background: rgba(251, 245, 244, 0.985);
-      display: none;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       touch-action: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
     }
-    .lightbox.active { display: block; }
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
     .lb-top {
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -916,7 +917,15 @@
       justify-content: space-between;
       padding: 0 32px;
       z-index: 30;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s 0.1s var(--ease-out), transform 0.4s 0.1s var(--ease-out);
     }
+    .lightbox.active .lb-top {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .lb-counter { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--ink-soft); }
     .lb-actions { display: flex; gap: 12px; }
     .lb-btn {
@@ -925,13 +934,14 @@
       display: grid;
       place-items: center;
       border: 1px solid var(--hairline);
-      background: transparent;
+      background: rgba(255, 255, 255, 0.4);
       color: var(--ink);
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
     }
     .lb-btn:hover { background: var(--ink); color: #ffffff; border-color: var(--ink); transform: scale(1.05); }
+
     .lb-stage {
       position: absolute;
       inset: 0;
@@ -940,7 +950,14 @@
       justify-content: center;
       padding: 84px 96px 44px;
       z-index: 10;
+      transform: scale(0.96);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .lightbox.active .lb-stage {
+      transform: scale(1);
+    }
+
+    /* High-res Image with Soft Watercolor Crossfade */
     .lb-img {
       max-width: 100%;
       max-height: 100%;
@@ -948,10 +965,136 @@
       box-shadow: 0 30px 70px -30px rgba(60, 40, 42, 0.32);
       user-select: none;
       border-radius: 2px;
+      opacity: 0;
+      transform: scale(0.97);
+      filter: blur(6px);
+      transition: opacity 0.45s ease-out, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease-out;
     }
-    .lb-nav { position: absolute; top: 50%; translate: 0 -50%; z-index: 30; width: 52px; height: 52px; }
+    .lb-img.loaded {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+
+    /* Organic Watercolor Pigment Bloom Loader */
+    .lb-watercolor-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+    .lb-watercolor-loader.is-loading {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .wc-bloom-wrap {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      filter: blur(1.5px);
+    }
+
+    .wc-blot {
+      position: absolute;
+      border-radius: 50%;
+      mix-blend-mode: multiply;
+      animation: wcPulse 2.8s ease-in-out infinite alternate;
+    }
+
+    .wc-blot-1 {
+      width: 52px;
+      height: 52px;
+      top: 4px;
+      left: 4px;
+      background: radial-gradient(circle, rgba(235, 190, 187, 0.85) 0%, rgba(220, 165, 160, 0.4) 65%, transparent 100%);
+      border-radius: 46% 54% 52% 48% / 48% 46% 54% 52%;
+      animation-duration: 2.4s;
+    }
+
+    .wc-blot-2 {
+      width: 56px;
+      height: 56px;
+      bottom: 4px;
+      right: 4px;
+      background: radial-gradient(circle, rgba(164, 184, 158, 0.75) 0%, rgba(140, 162, 134, 0.35) 60%, transparent 100%);
+      border-radius: 54% 46% 48% 52% / 52% 54% 46% 48%;
+      animation-duration: 3.1s;
+      animation-delay: -0.8s;
+    }
+
+    .wc-blot-3 {
+      width: 48px;
+      height: 48px;
+      top: 14px;
+      right: 6px;
+      background: radial-gradient(circle, rgba(190, 150, 152, 0.7) 0%, rgba(165, 120, 122, 0.3) 65%, transparent 100%);
+      border-radius: 48% 52% 46% 54% / 54% 48% 52% 46%;
+      animation-duration: 2.7s;
+      animation-delay: -1.4s;
+    }
+
+    .wc-blot-center {
+      width: 34px;
+      height: 34px;
+      top: 21px;
+      left: 21px;
+      background: radial-gradient(circle, rgba(245, 210, 208, 0.95) 0%, rgba(230, 185, 182, 0.5) 70%, transparent 100%);
+      border-radius: 50%;
+      animation: wcCenterPulse 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes wcPulse {
+      0%   { transform: scale(0.88) rotate(0deg); opacity: 0.7; }
+      50%  { transform: scale(1.12) rotate(45deg); opacity: 0.95; }
+      100% { transform: scale(0.94) rotate(90deg); opacity: 0.75; }
+    }
+
+    @keyframes wcCenterPulse {
+      0%   { transform: scale(0.85); opacity: 0.8; }
+      100% { transform: scale(1.18); opacity: 1; }
+    }
+
+    .wc-loader-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.96rem;
+      letter-spacing: 0.08em;
+      color: var(--mauve);
+      opacity: 0.85;
+      animation: wcTextPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes wcTextPulse {
+      0% { opacity: 0.55; }
+      100% { opacity: 0.95; }
+    }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      z-index: 30;
+      width: 52px;
+      height: 52px;
+      opacity: 0;
+      transition: opacity 0.4s 0.15s var(--ease-out), transform 0.4s var(--ease-out), background 0.3s ease;
+    }
+    .lightbox.active .lb-nav {
+      opacity: 1;
+    }
     .lb-prev { left: 26px; }
     .lb-next { right: 26px; }
+
     @media (max-width: 768px) {
       .lb-stage { padding: 76px 12px 24px; }
       .lb-top { padding: 0 16px; }
@@ -962,7 +1105,7 @@
 </head>
 <body>
 
-  <!-- Sticky Top Navigation -->
+  <!-- Smart Scroll Top Navigation (Auto-slides down on scroll up) -->
   <nav class="topnav" id="topnav" aria-label="Primary Navigation">
     <a href="#hero" class="topnav-mark">Vivian &amp; Ephraim</a>
     <div class="topnav-links">
@@ -1088,7 +1231,7 @@
     </footer>
   </div>
 
-  <!-- Pixieset-Style Modal Lightbox -->
+  <!-- Pixieset-Style Modal Lightbox with Watercolor Pigment Bloom Loader -->
   <div class="lightbox" id="lightboxModal" role="dialog" aria-modal="true">
     <div class="lb-top">
       <div class="lb-counter" id="lightboxCounter"></div>
@@ -1097,9 +1240,22 @@
         <button class="lb-btn" id="lbClose" title="Close (Esc)"><i data-lucide="x" style="width:20px;height:20px;stroke-width:1.5"></i></button>
       </div>
     </div>
+
     <div class="lb-stage" id="lbStage">
+      <!-- Watercolor Bloom Loading Effect -->
+      <div class="lb-watercolor-loader" id="lbLoader">
+        <div class="wc-bloom-wrap">
+          <div class="wc-blot wc-blot-1"></div>
+          <div class="wc-blot wc-blot-2"></div>
+          <div class="wc-blot wc-blot-3"></div>
+          <div class="wc-blot wc-blot-center"></div>
+        </div>
+        <div class="wc-loader-text">Loading photograph&hellip;</div>
+      </div>
+
       <img id="lightboxImage" class="lb-img" src="" alt="Wedding photograph" />
     </div>
+
     <button class="lb-btn lb-nav lb-prev" id="lbPrev" title="Previous"><i data-lucide="chevron-left" style="width:22px;height:22px;stroke-width:1.5"></i></button>
     <button class="lb-btn lb-nav lb-next" id="lbNext" title="Next"><i data-lucide="chevron-right" style="width:22px;height:22px;stroke-width:1.5"></i></button>
   </div>
@@ -1116,6 +1272,7 @@
     let visiblePhotos = [];
     let displayedCount = 0;
     let lbIndex = 0;
+    let currentLoadToken = 0;
 
     /* ---------------- Reveal-on-scroll Observer ---------------- */
     const revealObserver = new IntersectionObserver((entries) => {
@@ -1144,18 +1301,33 @@
       });
     }, { threshold: 0.06, rootMargin: '0px 0px -2% 0px' });
 
-    /* ---------------- Parallax + Hero Opacity + Topnav ---------------- */
+    /* ---------------- Smart Topnav (Hide on scroll down, show on scroll up) + Parallax ---------------- */
     const parallaxEls = [...document.querySelectorAll('[data-parallax]')];
     const heroContent = document.getElementById('heroContent');
     const hero = document.getElementById('hero');
     const topnav = document.getElementById('topnav');
     let ticking = false;
+    let lastScrollY = window.scrollY;
 
     function onScroll() {
       const y = window.scrollY;
       const vh = window.innerHeight;
+      const heroH = hero ? hero.offsetHeight : vh;
 
-      topnav.classList.toggle('show', y > hero.offsetHeight * 0.82);
+      // Smart Nav: only appears smoothly when scrolling UP past the hero
+      if (y > heroH * 0.6) {
+        if (y < lastScrollY - 6) {
+          // Scrolling UP past hero -> re-appear smoothly!
+          topnav.classList.add('show');
+        } else if (y > lastScrollY + 6) {
+          // Scrolling DOWN -> hide smoothly
+          topnav.classList.remove('show');
+        }
+      } else {
+        // Inside hero -> stay hidden
+        topnav.classList.remove('show');
+      }
+      lastScrollY = Math.max(0, y);
 
       if (!reduceMotion) {
         if (y < vh * 1.1) {
@@ -1321,27 +1493,63 @@
       document.getElementById('remainingCount').textContent = remaining > 0 ? `(${remaining})` : '';
     }
 
-    /* ---------------- Pixieset Fullscreen Lightbox ---------------- */
+    /* ---------------- Pixieset Fullscreen Lightbox with Watercolor Loading Effect ---------------- */
     const lb = document.getElementById('lightboxModal');
     const lbImg = document.getElementById('lightboxImage');
+    const lbLoader = document.getElementById('lbLoader');
 
     function renderLightbox() {
       const p = visiblePhotos[lbIndex];
       if (!p) return;
-      lbImg.src = p.full;
+
+      const thisToken = ++currentLoadToken;
       document.getElementById('lightboxCounter').textContent = `${lbIndex + 1} / ${visiblePhotos.length}`;
       document.getElementById('lightboxDownloadBtn').href = p.original || p.full;
+
+      // Preload next and previous images in background
       [lbIndex + 1, lbIndex - 1].forEach(j => {
         const q = visiblePhotos[(j + visiblePhotos.length) % visiblePhotos.length];
         if (q) new Image().src = q.full;
       });
+
+      // Check if image is already cached in memory
+      const testImg = new Image();
+      testImg.src = p.full;
+
+      if (testImg.complete && testImg.naturalWidth > 0) {
+        lbLoader.classList.remove('is-loading');
+        lbImg.src = p.full;
+        lbImg.classList.add('loaded');
+      } else {
+        // Needs network loading: activate watercolor pigment bloom loader!
+        lbLoader.classList.add('is-loading');
+        lbImg.classList.remove('loaded');
+
+        testImg.onload = () => {
+          if (thisToken !== currentLoadToken) return;
+          lbImg.src = p.full;
+          requestAnimationFrame(() => {
+            lbImg.classList.add('loaded');
+            lbLoader.classList.remove('is-loading');
+          });
+        };
+
+        testImg.onerror = () => {
+          if (thisToken !== currentLoadToken) return;
+          lbLoader.classList.remove('is-loading');
+          lbImg.src = p.full;
+          lbImg.classList.add('loaded');
+        };
+      }
     }
+
     function openLightbox(i) {
       lbIndex = i;
-      renderLightbox();
       lb.classList.add('active');
       document.body.style.overflow = 'hidden';
+      renderLightbox();
     }
+
     function openLightboxById(id) {
       let i = visiblePhotos.findIndex(p => p.id === id);
       if (i === -1) {
@@ -1350,8 +1558,22 @@
       }
       if (i !== -1) openLightbox(i);
     }
-    function closeLightbox() { lb.classList.remove('active'); document.body.style.overflow = ''; }
-    function step(d) { lbIndex = (lbIndex + d + visiblePhotos.length) % visiblePhotos.length; renderLightbox(); }
+
+    function closeLightbox() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!lb.classList.contains('active')) {
+          lbImg.classList.remove('loaded');
+          lbLoader.classList.remove('is-loading');
+        }
+      }, 400);
+    }
+
+    function step(d) {
+      lbIndex = (lbIndex + d + visiblePhotos.length) % visiblePhotos.length;
+      renderLightbox();
+    }
 
     document.getElementById('lbClose').onclick = closeLightbox;
     document.getElementById('lbPrev').onclick = e => { e.stopPropagation(); step(-1); };
@@ -1363,6 +1585,7 @@
       if (e.key === 'ArrowLeft') step(-1);
       if (e.key === 'ArrowRight') step(1);
     });
+
     let tx = null;
     lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
     lb.addEventListener('touchend', e => {
