@@ -444,7 +444,7 @@
     }
 
     /* ==========================================================================
-       WATERCOLOR BOTANICALS (Seamless Multiply Blend & Edge Feathering)
+       WATERCOLOR BOTANICALS (Pure Transparent Alpha PNGs)
        ========================================================================== */
     .floral {
       position: absolute;
@@ -455,42 +455,29 @@
     .floral img {
       width: 100%;
       height: auto;
-      mix-blend-mode: multiply;
-      filter: brightness(1.03) contrast(1.04) saturate(0.92);
       opacity: 0;
       scale: 0.95;
       transition: opacity 2.2s var(--ease-out), scale 2.4s var(--ease-out);
     }
-    .floral.is-visible img { opacity: 0.88; scale: 1; }
+    .floral.is-visible img { opacity: 0.9; scale: 1; }
 
-    .floral-corner img {
-      -webkit-mask-image: radial-gradient(ellipse 110% 110% at 0% 0%, #000 48%, transparent 75%);
-              mask-image: radial-gradient(ellipse 110% 110% at 0% 0%, #000 48%, transparent 75%);
-    }
-    .floral-tl { top: -30px; left: -40px; width: clamp(230px, 28vw, 420px); }
-    .floral-tr { top: -30px; right: -40px; width: clamp(230px, 28vw, 420px); }
+    .floral-tl { top: -25px; left: -30px; width: clamp(220px, 26vw, 380px); }
+    .floral-tr { top: -25px; right: -30px; width: clamp(220px, 26vw, 380px); }
     .floral-tr img { transform: scaleX(-1); }
 
-    .floral-sprig img {
-      -webkit-mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 68%, transparent 100%);
-              mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 68%, transparent 100%);
-    }
-    .floral-sl { top: 40px; left: max(-30px, calc(50% - 780px)); width: clamp(140px, 14vw, 220px); rotate: -6deg; }
-    .floral-sr { top: 40px; right: max(-30px, calc(50% - 780px)); width: clamp(140px, 14vw, 220px); rotate: 6deg; }
+    .floral-sl { top: 40px; left: max(-30px, calc(50% - 780px)); width: clamp(130px, 13vw, 200px); rotate: -6deg; }
+    .floral-sr { top: 40px; right: max(-30px, calc(50% - 780px)); width: clamp(130px, 13vw, 200px); rotate: 6deg; }
     .floral-sr img { transform: scaleX(-1); }
 
     /* Archive Section Botanical Accents */
-    .floral-bento-tl { top: -50px; left: -40px; width: clamp(220px, 26vw, 390px); }
-    .floral-bento-tr { top: -50px; right: -40px; width: clamp(220px, 26vw, 390px); }
+    .floral-bento-tl { top: -45px; left: -30px; width: clamp(200px, 24vw, 360px); }
+    .floral-bento-tr { top: -45px; right: -30px; width: clamp(200px, 24vw, 360px); }
     .floral-bento-tr img { transform: scaleX(-1); }
-    .floral-bento-sl { bottom: 30px; left: max(-25px, calc(50% - 770px)); width: clamp(130px, 13vw, 200px); rotate: -8deg; }
-    .floral-bento-sr { bottom: 30px; right: max(-25px, calc(50% - 770px)); width: clamp(130px, 13vw, 200px); rotate: 8deg; }
-    .floral-bento-sr img { transform: scaleX(-1); }
 
     @media (max-width: 900px) {
-      .floral-sl, .floral-sr, .floral-bento-sl, .floral-bento-sr { display: none; }
-      .floral-tl, .floral-tr, .floral-bento-tl, .floral-bento-tr { width: 190px; top: -20px; }
-      .floral.is-visible img { opacity: 0.65; }
+      .floral-sl, .floral-sr { display: none; }
+      .floral-tl, .floral-tr, .floral-bento-tl, .floral-bento-tr { width: 180px; top: -15px; }
+      .floral.is-visible img { opacity: 0.7; }
     }
 
     /* ==========================================================================
@@ -736,7 +723,7 @@
     .archive-section {
       position: relative;
       background: var(--canvas);
-      padding: clamp(70px, 9vw, 120px) 0 clamp(40px, 6vw, 70px);
+      padding: clamp(60px, 8vw, 100px) 0 clamp(28px, 4vw, 44px);
       overflow: hidden;
     }
 
@@ -814,24 +801,30 @@
        ========================================================================== */
     footer {
       text-align: center;
-      padding: clamp(60px, 8vw, 90px) 24px 60px;
+      padding: clamp(24px, 3.5vw, 44px) 24px 60px;
       background: var(--canvas);
       color: var(--ink-soft);
       position: relative;
       overflow: hidden;
     }
-    .footer-floral-accent {
-      width: clamp(140px, 16vw, 220px);
-      margin: 0 auto 16px;
+    .footer-garland-crest {
+      width: clamp(280px, 32vw, 460px);
+      margin: 0 auto clamp(16px, 2.5vw, 24px);
       pointer-events: none;
+      line-height: 0;
     }
-    .footer-floral-accent img {
+    .footer-garland-crest img {
       width: 100%;
       height: auto;
-      mix-blend-mode: multiply;
-      filter: brightness(1.03) contrast(1.04);
-      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 50%, transparent 95%);
-              mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 50%, transparent 95%);
+      display: block;
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+      filter: drop-shadow(0 4px 16px rgba(180, 140, 145, 0.08));
+      transition: opacity 2s var(--ease-out), transform 2s var(--ease-out);
+    }
+    .footer-garland-crest.is-visible img {
+      opacity: 0.92;
+      transform: translateY(0) scale(1);
     }
     .footer-names {
       font-family: var(--script);
@@ -1134,8 +1127,8 @@
   <!-- Cinematic Spotlight Highlights Carousel -->
   <section class="spotlight" id="spotlight">
     <!-- Authentic Watercolor Corner Sprays -->
-    <div class="floral floral-corner floral-tl" data-parallax="0.1"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
-    <div class="floral floral-corner floral-tr" data-parallax="0.1"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-corner floral-tl" data-parallax="0.1"><img src="floral_corner.png" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-corner floral-tr" data-parallax="0.1"><img src="floral_corner.png" alt="" aria-hidden="true" /></div>
 
     <div class="section-head">
       <div class="eyebrow reveal">Curated Moments</div>
@@ -1163,8 +1156,8 @@
   <!-- Main Complete Gallery Section -->
   <section class="gallery" id="gallery">
     <!-- Botanical Side Sprigs -->
-    <div class="floral floral-sprig floral-sl" data-parallax="0.15"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
-    <div class="floral floral-sprig floral-sr" data-parallax="0.15"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-sprig floral-sl" data-parallax="0.15"><img src="floral_sprig.png" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-sprig floral-sr" data-parallax="0.15"><img src="floral_sprig.png" alt="" aria-hidden="true" /></div>
 
     <div class="section-head">
       <div class="eyebrow reveal">The Complete Collection</div>
@@ -1195,10 +1188,8 @@
   <!-- Complete Archive Section with Authentic Watercolor Framing -->
   <section class="archive-section" id="archive">
     <!-- Watercolor Floral Arrangements Framing Archive Card in Negative Space -->
-    <div class="floral floral-corner floral-bento-tl" data-parallax="0.08"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
-    <div class="floral floral-corner floral-bento-tr" data-parallax="0.08"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
-    <div class="floral floral-sprig floral-bento-sl" data-parallax="0.12"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
-    <div class="floral floral-sprig floral-bento-sr" data-parallax="0.12"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-corner floral-bento-tl" data-parallax="0.08"><img src="floral_corner.png" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-corner floral-bento-tr" data-parallax="0.08"><img src="floral_corner.png" alt="" aria-hidden="true" /></div>
 
     <div class="bento-wrap">
       <div class="bento reveal" id="bentoSection">
@@ -1218,10 +1209,10 @@
     </div>
   </section>
 
-  <!-- Light Linen Stationery Footer with Watercolor Botanical Accent -->
+  <!-- Light Linen Stationery Footer with Watercolor Botanical Garland Crest -->
   <footer>
-    <div class="footer-floral-accent reveal">
-      <img src="floral_corner.jpg" alt="" aria-hidden="true" />
+    <div class="footer-garland-crest reveal">
+      <img src="floral_garland.png" alt="Botanical Garland Crest" aria-hidden="true" />
     </div>
     <div class="footer-names reveal">Vivian &amp; Ephraim</div>
     <div class="footer-date reveal" style="--d: 120ms">August 16, 2026</div>
