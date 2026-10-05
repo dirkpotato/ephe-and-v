@@ -18,7 +18,7 @@
 
   <style>
     /* ==========================================================================
-       DESIGN TOKENS — High-End Luxury Wedding Editorial
+       DESIGN TOKENS — High-End Luxury Wedding Editorial (Soft Blush Linen Canvas)
        ========================================================================== */
     :root {
       --canvas: #fbf5f4;           /* Porcelain blush canvas */
@@ -32,7 +32,7 @@
       --blush: #eac5c2;
       --gold: #b39268;             /* Subtle warm antique gold */
       --gold-light: #dfc8a8;
-      --night: #181112;            /* Velvet night black */
+      --night: #181112;
       --hairline: rgba(120, 94, 92, 0.16);
 
       --serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
@@ -63,7 +63,7 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    ::selection { background: var(--blush); color: var(--night); }
+    ::selection { background: var(--blush); color: var(--ink); }
 
     /* ==========================================================================
        SMOOTH SCROLL-REVEAL SYSTEM
@@ -444,7 +444,7 @@
     }
 
     /* ==========================================================================
-       WATERCOLOR BOTANICALS
+       WATERCOLOR BOTANICALS (Seamless Multiply Blend & Edge Feathering)
        ========================================================================== */
     .floral {
       position: absolute;
@@ -479,9 +479,17 @@
     .floral-sr { top: 40px; right: max(-30px, calc(50% - 780px)); width: clamp(140px, 14vw, 220px); rotate: 6deg; }
     .floral-sr img { transform: scaleX(-1); }
 
+    /* Archive Section Botanical Accents */
+    .floral-bento-tl { top: -50px; left: -40px; width: clamp(220px, 26vw, 390px); }
+    .floral-bento-tr { top: -50px; right: -40px; width: clamp(220px, 26vw, 390px); }
+    .floral-bento-tr img { transform: scaleX(-1); }
+    .floral-bento-sl { bottom: 30px; left: max(-25px, calc(50% - 770px)); width: clamp(130px, 13vw, 200px); rotate: -8deg; }
+    .floral-bento-sr { bottom: 30px; right: max(-25px, calc(50% - 770px)); width: clamp(130px, 13vw, 200px); rotate: 8deg; }
+    .floral-bento-sr img { transform: scaleX(-1); }
+
     @media (max-width: 900px) {
-      .floral-sl, .floral-sr { display: none; }
-      .floral-tl, .floral-tr { width: 190px; top: -20px; }
+      .floral-sl, .floral-sr, .floral-bento-sl, .floral-bento-sr { display: none; }
+      .floral-tl, .floral-tr, .floral-bento-tl, .floral-bento-tr { width: 190px; top: -20px; }
       .floral.is-visible img { opacity: 0.65; }
     }
 
@@ -695,6 +703,7 @@
     .photo:hover img { transform: scale(1.035); }
     .photo:hover::after { opacity: 1; }
 
+    /* Load More Button */
     .load-more { text-align: center; padding: 36px 0 20px; position: relative; z-index: 2; }
     .btn-outline-load {
       display: inline-flex;
@@ -721,81 +730,36 @@
     }
 
     /* ==========================================================================
-       ULTRA-SMOOTH EASED EVENING ARCHIVE PAVILION
-       Mathematical 20-stop smootherstep in OKLab: zero banding, zero dark shelf
+       ARCHIVE SECTION — SEAMLESS BLUSH LINEN CANVAS WITH WATERCOLOR DECORATIONS
+       No dark gradient; pure bespoke wedding stationery aesthetic throughout
        ========================================================================== */
-    .dark-lower-zone {
+    .archive-section {
       position: relative;
-      background: #181112;
-      color: #fff;
-      padding-top: 240px;
-      margin-top: 0;
-      isolation: isolate;
-    }
-
-    .dark-lower-zone::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 250px;
-      background: linear-gradient(
-        180deg,
-        #fbf5f4 0.0%,
-        #fdf4f3 5.0%,
-        #fcf2f0 10.0%,
-        #f9ecea 15.0%,
-        #f3e4e1 20.0%,
-        #e8d7d5 25.0%,
-        #dac8c5 30.0%,
-        #c9b5b3 35.0%,
-        #b5a19e 40.0%,
-        #9f8b89 45.0%,
-        #897573 50.0%,
-        #74605e 55.0%,
-        #5f4c4b 60.0%,
-        #4d3b3a 65.0%,
-        #3d2d2c 70.0%,
-        #312222 75.0%,
-        #271a1a 80.0%,
-        #201415 85.0%,
-        #1c1212 90.0%,
-        #191112 95.0%,
-        #181112 100.0%
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @media (max-width: 768px) {
-      .dark-lower-zone {
-        padding-top: 170px;
-      }
-      .dark-lower-zone::before {
-        height: 180px;
-      }
+      background: var(--canvas);
+      padding: clamp(70px, 9vw, 120px) 0 clamp(40px, 6vw, 70px);
+      overflow: hidden;
     }
 
     .bento-wrap {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 1380px;
       margin: 0 auto;
       padding: 0 clamp(16px, 3vw, 24px);
     }
 
+    /* Bento Mosaic Box — Kept as an elegant luxury keepsake album card */
     .bento {
       position: relative;
       min-height: 560px;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: #201718;
-      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      background: #241a1c;
+      box-shadow: 0 24px 60px -15px rgba(80, 50, 55, 0.22), 0 0 0 1px rgba(120, 94, 92, 0.12);
     }
 
     .bento-grid {
@@ -813,13 +777,13 @@
 
     .bento-cell { overflow: hidden; }
     .bento-cell.span-2 { grid-column: span 2; }
-    .bento-cell img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.64) saturate(0.95); }
+    .bento-cell img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.66) saturate(0.95); }
 
     .bento-overlay {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: radial-gradient(ellipse at center, rgba(24, 17, 18, 0.74) 0%, rgba(24, 17, 18, 0.92) 80%);
+      background: radial-gradient(ellipse at center, rgba(30, 20, 22, 0.74) 0%, rgba(30, 20, 22, 0.92) 80%);
     }
 
     .bento-content {
@@ -845,33 +809,60 @@
       max-width: 480px;
     }
 
-    /* Footer */
+    /* ==========================================================================
+       FOOTER — ELEGANT LIGHT BLUSH PORCELAIN SUITE
+       ========================================================================== */
     footer {
       text-align: center;
-      padding: clamp(80px, 9vw, 110px) 24px 50px;
-      background: #181112;
-      color: rgba(255, 255, 255, 0.7);
+      padding: clamp(60px, 8vw, 90px) 24px 60px;
+      background: var(--canvas);
+      color: var(--ink-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-floral-accent {
+      width: clamp(140px, 16vw, 220px);
+      margin: 0 auto 16px;
+      pointer-events: none;
+    }
+    .footer-floral-accent img {
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+      filter: brightness(1.03) contrast(1.04);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 50%, transparent 95%);
+              mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 50%, transparent 95%);
     }
     .footer-names {
       font-family: var(--script);
-      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
-      color: #f7d5d2;
+      font-size: clamp(3rem, 5.8vw, 4.5rem);
+      color: var(--mauve-deep);
       line-height: 1.2;
     }
     .footer-date {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       letter-spacing: 0.44em;
       text-transform: uppercase;
-      margin-top: 14px;
+      margin-top: 12px;
       padding-left: 0.44em;
-      color: rgba(255, 255, 255, 0.65);
+      color: var(--mauve);
+      font-weight: 400;
     }
-    footer .rule { margin: 40px auto 36px; color: rgba(255, 255, 255, 0.4); }
-    .footer-brand-label { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: rgba(255, 255, 255, 0.55); }
+    footer .rule {
+      margin: 36px auto 32px;
+      color: var(--mauve);
+      opacity: 0.3;
+    }
+    .footer-brand-label {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+    }
     .footer-brand {
       margin-top: 6px;
       font-family: var(--serif);
-      font-weight: 400;
+      font-weight: 500;
       font-size: 1.15rem;
       letter-spacing: 0.36em;
       text-transform: uppercase;
@@ -879,15 +870,15 @@
       padding-left: 0.36em;
     }
     .footer-copy {
-      margin-top: 50px;
+      margin-top: 46px;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
-      color: rgba(255, 255, 255, 0.36);
+      color: var(--ink-muted);
+      opacity: 0.8;
     }
 
     /* ==========================================================================
        PIXIESET-STYLE MODAL LIGHTBOX WITH WATERCOLOR BLOOM LOADER
-       Smooth open/close transition & organic watercolor pigment loader
        ========================================================================== */
     .lightbox {
       position: fixed;
@@ -957,7 +948,6 @@
       transform: scale(1);
     }
 
-    /* High-res Image with Soft Watercolor Crossfade */
     .lb-img {
       max-width: 100%;
       max-height: 100%;
@@ -1134,7 +1124,7 @@
       </div>
     </div>
 
-    <!-- Scroll Cue — Positioned with dedicated breathing room -->
+    <!-- Scroll Cue -->
     <a class="scroll-cue hero-in" style="--d: 1600ms" href="#spotlight" aria-label="Scroll to highlights">
       <span>Scroll</span>
       <span class="line"></span>
@@ -1202,11 +1192,17 @@
     </div>
   </section>
 
-  <!-- Dark Evening Pavilion — Unified Transition & Bento Archive & Footer -->
-  <div class="dark-lower-zone">
+  <!-- Complete Archive Section with Authentic Watercolor Framing -->
+  <section class="archive-section" id="archive">
+    <!-- Watercolor Floral Arrangements Framing Archive Card in Negative Space -->
+    <div class="floral floral-corner floral-bento-tl" data-parallax="0.08"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-corner floral-bento-tr" data-parallax="0.08"><img src="floral_corner.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-sprig floral-bento-sl" data-parallax="0.12"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
+    <div class="floral floral-sprig floral-bento-sr" data-parallax="0.12"><img src="floral_sprig.jpg" alt="" aria-hidden="true" /></div>
+
     <div class="bento-wrap">
-      <section class="bento reveal" id="bentoSection">
-        <div class="bento-grid" id="bentoGrid" data-parallax="-0.06"></div>
+      <div class="bento reveal" id="bentoSection">
+        <div class="bento-grid" id="bentoGrid" data-parallax="-0.04"></div>
         <div class="bento-overlay"></div>
         <div class="bento-content">
           <div class="eyebrow reveal" style="--d: 160ms">Complete Repository</div>
@@ -1218,18 +1214,22 @@
             </a>
           </div>
         </div>
-      </section>
+      </div>
     </div>
+  </section>
 
-    <footer>
-      <div class="footer-names reveal">Vivian &amp; Ephraim</div>
-      <div class="footer-date reveal" style="--d: 120ms">August 16, 2026</div>
-      <span class="rule" style="--d: 180ms"></span>
-      <div class="footer-brand-label reveal" style="--d: 240ms">captured by</div>
-      <div class="footer-brand reveal" style="--d: 320ms">Dhwang Photography</div>
-      <div class="footer-copy">&copy; 2026 Dhwang Photography &middot; Made with love for Vivian &amp; Ephraim</div>
-    </footer>
-  </div>
+  <!-- Light Linen Stationery Footer with Watercolor Botanical Accent -->
+  <footer>
+    <div class="footer-floral-accent reveal">
+      <img src="floral_corner.jpg" alt="" aria-hidden="true" />
+    </div>
+    <div class="footer-names reveal">Vivian &amp; Ephraim</div>
+    <div class="footer-date reveal" style="--d: 120ms">August 16, 2026</div>
+    <span class="rule" style="--d: 180ms"></span>
+    <div class="footer-brand-label reveal" style="--d: 240ms">captured by</div>
+    <div class="footer-brand reveal" style="--d: 320ms">Dhwang Photography</div>
+    <div class="footer-copy">&copy; 2026 Dhwang Photography &middot; Made with love for Vivian &amp; Ephraim</div>
+  </footer>
 
   <!-- Pixieset-Style Modal Lightbox with Watercolor Pigment Bloom Loader -->
   <div class="lightbox" id="lightboxModal" role="dialog" aria-modal="true">
