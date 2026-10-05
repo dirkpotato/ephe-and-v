@@ -230,14 +230,12 @@
       backface-visibility: hidden;
     }
 
-    /* Active Slide with continuous, gentle GPU drift */
     .kenburns-slide.is-active {
       opacity: 1;
       z-index: 2;
       animation: gentleDrift 14s cubic-bezier(0.2, 0, 0.25, 1) forwards;
     }
 
-    /* Outgoing slide remains visible during crossfade without snapping back */
     .kenburns-slide.is-prev {
       opacity: 0;
       z-index: 1;
@@ -268,7 +266,7 @@
       position: relative;
       z-index: 3;
       max-width: 860px;
-      padding: 0 24px 80px; /* Ample bottom padding to guarantee zero button/scroll collision */
+      padding: 0 24px 80px;
       will-change: transform, opacity;
       margin: auto;
     }
@@ -377,7 +375,6 @@
       min-width: 220px;
     }
 
-    /* Primary: Frosted Warm Ivory Pill */
     .btn-hero-primary {
       background: rgba(255, 255, 255, 0.92);
       color: #2b2021;
@@ -391,7 +388,6 @@
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 
-    /* Secondary: Matching Frosted Glass Outline Pill */
     .btn-hero-secondary {
       background: rgba(255, 255, 255, 0.12);
       color: #ffffff;
@@ -407,7 +403,7 @@
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
     }
 
-    /* Scroll Cue — Perfectly Aligned at bottom with guaranteed breathing room */
+    /* Scroll Cue */
     .scroll-cue {
       position: absolute;
       left: 50%;
@@ -454,8 +450,8 @@
     }
 
     /* ==========================================================================
-       WATERCOLOR BOTANICALS — MULTIPLY BLEND & FEATHERED EDGE MASKS
-       ========================================================================== */
+       WATERCOLOR BOTANICALS
+       ========================================================================= */
     .floral {
       position: absolute;
       pointer-events: none;
@@ -622,7 +618,7 @@
       position: relative;
       max-width: 1480px;
       margin: 0 auto;
-      padding: clamp(40px, 6vw, 70px) clamp(16px, 3vw, 40px) 40px;
+      padding: clamp(40px, 6vw, 70px) clamp(16px, 3vw, 40px) 20px;
       background: var(--canvas);
     }
 
@@ -733,34 +729,66 @@
     }
 
     /* ==========================================================================
-       SEAMLESS EVENING ARCHIVE TRANSITION — WARM, LUMINOUS & ELEGANT
-       Transitions through rich rosewood into night velvet BEFORE the bento card
+       ULTRA-SMOOTH EASED EVENING ARCHIVE PAVILION
+       Mathematical 20-stop smootherstep in OKLab: zero banding, zero dark shelf
        ========================================================================== */
-    .archive-transition-bridge {
-      position: relative;
-      height: 240px;
-      /* Rich, warm sunset-into-velvet progression: No gray muddy bands */
-      background: linear-gradient(
-        180deg,
-        #fbf5f4 0%,
-        #f5e7e6 20%,
-        #d8bfbf 45%,
-        #825d60 70%,
-        #3b2628 88%,
-        #181112 100%
-      );
-      margin-bottom: -1px;
-    }
-
     .dark-lower-zone {
+      position: relative;
       background: #181112;
       color: #fff;
-      padding: 20px 0 0;
-      position: relative;
+      padding-top: 240px;
+      margin-top: 0;
       isolation: isolate;
     }
 
+    /* Continuous, perfectly eased sunset-into-velvet gradient bridge */
+    .dark-lower-zone::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 250px;
+      background: linear-gradient(
+        180deg,
+        #fbf5f4 0.0%,
+        #fdf4f3 5.0%,
+        #fcf2f0 10.0%,
+        #f9ecea 15.0%,
+        #f3e4e1 20.0%,
+        #e8d7d5 25.0%,
+        #dac8c5 30.0%,
+        #c9b5b3 35.0%,
+        #b5a19e 40.0%,
+        #9f8b89 45.0%,
+        #897573 50.0%,
+        #74605e 55.0%,
+        #5f4c4b 60.0%,
+        #4d3b3a 65.0%,
+        #3d2d2c 70.0%,
+        #312222 75.0%,
+        #271a1a 80.0%,
+        #201415 85.0%,
+        #1c1212 90.0%,
+        #191112 95.0%,
+        #181112 100.0%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .dark-lower-zone {
+        padding-top: 170px;
+      }
+      .dark-lower-zone::before {
+        height: 180px;
+      }
+    }
+
     .bento-wrap {
+      position: relative;
+      z-index: 1;
       max-width: 1380px;
       margin: 0 auto;
       padding: 0 clamp(16px, 3vw, 24px);
@@ -868,7 +896,7 @@
     }
 
     /* ==========================================================================
-       PIXIESET-STYLE FULLSCREEN LIGHTBOX
+       PIXIESET-STYLE MODAL LIGHTBOX
        ========================================================================== */
     .lightbox {
       position: fixed;
@@ -1031,10 +1059,7 @@
     </div>
   </section>
 
-  <!-- Seamless Transition Bridge into Dark Velvet Evening Section -->
-  <div class="archive-transition-bridge"></div>
-
-  <!-- Dark Evening Pavilion — Bento Archive & Footer -->
+  <!-- Dark Evening Pavilion — Unified Transition & Bento Archive & Footer -->
   <div class="dark-lower-zone">
     <div class="bento-wrap">
       <section class="bento reveal" id="bentoSection">
@@ -1175,7 +1200,6 @@
         const prev = slides[cur];
         const nextSlide = slides[next];
 
-        // Transition: next fades in while zooming, prev stays smooth without jumping
         prev.classList.remove('is-active');
         prev.classList.add('is-prev');
 
